@@ -1,0 +1,165 @@
+<div class="container">
+  <div style="margin-top: 50px;">
+    <div class="panel panel-default">
+      <div class="panel-heading">Customer Info</div>
+      <div class="panel-body">
+        <form novalidate (ngSubmit)="Save()" [formGroup]="contactForm">
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="firstNameId">Title</label>
+            <div class="col-md-8">
+              <select class="form-control" id="title" formControlName="title">
+                <option *ngFor="let title of titles" [value]="title">{{
+                  title
+                }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="firstNameId">First Name</label>
+            <div class="col-md-8">
+              <input class="form-control" id="firstNameId" type="text" placeholder="First Name (required)"
+                formControlName="firstName" [ngClass]="{
+                  'is-invalid':
+                    (contactForm.get('firstName').touched ||
+                      contactForm.get('firstName').dirty) &&
+                    !contactForm.get('firstName').valid
+                }" />
+              <span class="invalid-feedback">
+                <span *ngIf="contactForm.get('firstName').errors?.required">
+                  Please enter your first name.
+                </span>
+                <span *ngIf="contactForm.get('firstName').errors?.pattern">
+                  The first name must be longer than 3 characters.
+                </span>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="lastNameId">Last Name</label>
+            <div class="col-md-8">
+              <input class="form-control" id="lastNameId" type="text" placeholder="Last Name (required)"
+                formControlName="lastName" [ngClass]="{
+                  'is-invalid':
+                    (contactForm.get('lastName').touched ||
+                      contactForm.get('lastName').dirty) &&
+                    !contactForm.get('lastName').valid
+                }" />
+              <span class="invalid-feedback">
+                <span *ngIf="contactForm.get('lastName').errors?.required">
+                  Please enter your last name.
+                </span>
+                <span *ngIf="contactForm.get('lastName').errors?.maxlength">
+                  The last name must be less than 50 characters.
+                </span>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="lastNameId">ID</label>
+            <div class="col-md-8">
+              <input class="form-control" id="lastNameId" type="text" placeholder="id(required)" formControlName="id"
+                [ngClass]="{
+                  'is-invalid':
+                    (contactForm.get('id').touched ||
+                      contactForm.get('id').dirty) &&
+                    !contactForm.get('id').valid
+                }" />
+              <span class="invalid-feedback">
+                <span *ngIf="contactForm.get('id').errors?.required">
+                  Please enter your ID
+                </span>
+                <span *ngIf="contactForm.get('id').errors?.maxlength">
+                  please enter a valid RSA 13 digit ID
+                </span>
+                <div class="valid-feedback">
+                  <span *ngIf="contactForm.get('id').valid">
+                    looks good
+                  </span>
+                </div>
+              </span>
+            </div>
+          </div>
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="Gender">Gender</label>
+            <div class="col-md-8">
+              <select class="form-control" formControlName="gender" id="gender">
+                <option *ngFor="let gender of genders" [value]="gender">{{
+                  gender
+                }}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="phoneNumber">phoneNumber</label>
+            <div class="col-md-8">
+              <input class="form-control" id="phoneNumberid" type="text" placeholder="phoneNumber(required)"
+                formControlName="phoneNumber" [ngClass]="{
+                  'is-invalid':
+                    (contactForm.get('phoneNumber').touched ||
+                      contactForm.get('phoneNumber').dirty) &&
+                    !contactForm.get('phoneNumber').valid
+                }" />
+              <span class="invalid-feedback">
+                <span *ngIf="contactForm.get('phoneNumber').errors?.required">
+                  Please enter your phoneNumber
+                </span>
+                <span *ngIf="
+                    contactForm.get('phoneNumber').errors?.localPhoneNumber
+                  ">
+                  Please enter a Valid phone number
+                </span>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="emailId">Email</label>
+            <div class="col-md-8">
+              <input class="form-control" id="emailId" type="email" placeholder="Email (required)"
+                formControlName="email" [ngClass]="{
+                  'is-invalid':
+                    (contactForm.get('email').touched ||
+                      contactForm.get('email').dirty) &&
+                    !contactForm.get('email').valid
+                }" />
+              <span class="invalid-feedback">
+                <span *ngIf="contactForm.get('email').errors?.required">
+                  Email is required.
+                </span>
+                <span *ngIf="contactForm.get('email').errors?.email">
+                  Please enter a valid email address.
+                </span>
+              </span>
+              <span class="valid-feedback">
+                <span *ngIf="contactForm.get('email').valid">
+                  looks good
+                </span>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group row mb-2">
+            <div class="offset-md-2 col-md-4">
+              <button class="btn btn-primary mr-3" type="submit" style="width: 80px;" [title]="
+                  contactForm.valid
+                    ? 'Save your entered data'
+                    : 'Disabled until the form data is valid'
+                " [disabled]="!contactForm.valid">
+                Save
+              </button>
+            </div>
+          </div>
+
+          <br />
+          Dirty: {{ contactForm.dirty }} <br />
+          Touched: {{ contactForm.touched }} <br />
+          Valid: {{ contactForm.valid }} <br />
+          Value: {{ contactForm.value | json }}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
