@@ -4,10 +4,9 @@ export class Contact {
   firstName: string;
   lastName: string;
   gender: Gender;
-  IdNumber:string
+  IdNumber: string;
   birthDate: Date;
   title: Title;
   phoneNumber: string;
   email: string;
-  poc:string;
 }
