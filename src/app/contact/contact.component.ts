@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-  AbstractControl,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { localPhoneNumber } from '../validations/phone-number-validation';
-import { localIdNumber } from '../validations/id-validation';
+
 import { Contact } from '../models/contact';
 import { Title } from '../models/title-enum';
 import { Gender } from '../models/gender-enum';
