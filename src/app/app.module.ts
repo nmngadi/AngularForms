@@ -15,6 +15,8 @@ import { TextOnlyDirective } from './directives/text-only.directive';
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule, RouterModule.forRoot([
     { path: 'contact', component: ContactComponent },
     { path: 'address', component: AddressComponent },
+    { path: '', redirectTo: 'address', pathMatch: 'full' },
+    { path: '**', redirectTo: 'address', pathMatch: 'full' }
     ])],
   providers: [],
   bootstrap: [AppComponent],
