@@ -1,8 +1,7 @@
 export class Address {
-  addressStreet: string;
+  streetName: string;
   suburb: string;
   city: string;
   province: string;
-  country:string;
-  zipcode:number;
+  zipcode: number;
 }
