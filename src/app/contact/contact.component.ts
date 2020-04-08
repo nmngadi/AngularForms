@@ -5,6 +5,7 @@ import { localPhoneNumber } from '../validations/phone-number-validation';
 import { Contact } from '../models/contact';
 import { Title } from '../models/title-enum';
 import { Gender } from '../models/gender-enum';
+import { textvalidation } from '../validations/text-only-validation';
 
 @Component({
   selector: 'app-customer',
@@ -24,9 +25,10 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {
     this.contactForm = this.fb.group({
-      firstName: ['', [Validators.required, Validators.minLength(2)]],
-      lastName: ['', [Validators.required, Validators.maxLength(50)]],
+      firstName: ['', [Validators.required, Validators.minLength(2), textvalidation()]],
+      lastName: ['', [Validators.required, Validators.maxLength(50), textvalidation()]],
       email: ['', Validators.email],
+      gender: ['', Validators.required],
       id: ['', [Validators.required, Validators.maxLength(13)]],
       title: [''],
       phoneNumber: ['', [Validators.required, localPhoneNumber()]],

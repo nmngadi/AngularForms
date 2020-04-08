@@ -1,13 +1,13 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 
-export function localPhoneNumber(): ValidatorFn {
+export function textvalidation(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: boolean } | null => {
     if (!control.value) {
       return null;
     }
+    const regec = new RegExp('^[a-zA-Z]+$');
+    const isValid = regec.test(control.value);
 
-    const isValid = /^\+27/.test(control.value);
-
-    return isValid ? null : { localPhoneNumber: true };
+    return isValid ? null : { textvalidation: true };
   };
 }
