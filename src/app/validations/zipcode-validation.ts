@@ -5,8 +5,7 @@ export function zipCode(): ValidatorFn {
     if (!control.value) {
       return null;
     }
-    const regec = new RegExp('^[0-9]{4}$');
-    const isValid = regec.test(control.value);
+    const isValid = /^[0-9]{4}$/.test(control.value);
 
     return isValid ? null : { zipCode: true };
   };
