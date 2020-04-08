@@ -5,8 +5,8 @@ export function localPhoneNumber(): ValidatorFn {
     if (!control.value) {
       return null;
     }
-    const regec = new RegExp('(^0[78][2347][0-9]{7})');
-    const isValid = regec.test(control.value);
+
+    const isValid = /^\+27/.test(control.value);
 
     return isValid ? null : { localPhoneNumber: true };
   };
