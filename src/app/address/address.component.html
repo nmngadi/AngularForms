@@ -12,22 +12,24 @@
                       <label for="streetName"> Street</label>
                       <input type="text" class="form-control input-lg" name="streetName" [(ngModel)]="model.streetName" #streetName="ngModel" [ngClass]="{ 'is-invalid':  streetName.invalid }" required pattern="\d{1,3}.?\d{0,3}\s[a-zA-Z]{2,30}\s[a-zA-Z]{2,15}" />
                       <div *ngIf="streetName.invalid" class="invalid-feedback">
-                          <div *ngIf="streetName.errors.required">street Name is required</div>
-                          <div *ngIf="streetName.errors.pattern">street Name is not in correct format</div>
+                          <div *ngIf="streetName.errors.required">Street name is required.</div>
+                          <div *ngIf="streetName.errors.pattern">Street name is not in correct format<br> example: 16 bontanic avenue</div>
                       </div>
                   </div>
                   <div class="form-group">
                       <label for="suburb">Suburb</label>
-                      <input type="text" class="form-control" name="suburb" [(ngModel)]="model.suburb" #suburb="ngModel" [ngClass]="{ 'is-invalid':suburb.invalid }" required />
+                      <input type="text" class="form-control" name="suburb" [(ngModel)]="model.suburb" #suburb="ngModel" [ngClass]="{ 'is-invalid':suburb.invalid }" required appTextOnly />
                       <span class="invalid-feedback">
                           <span *ngIf="suburb.errors?.required">suburb is required</span>
+                          <span *ngIf="suburb.errors?.textvalidation">no numbers allowed ,letters only.</span>
                       </span>
                   </div>
                   <div class="form-group">
                     <label for="city">City</label>
-                    <input type="text" class="form-control" name="city" [(ngModel)]="model.city" #city="ngModel" [ngClass]="{ 'is-invalid':city.invalid }" required />
+                    <input type="text" class="form-control" name="city" [(ngModel)]="model.city" #city="ngModel" [ngClass]="{ 'is-invalid':city.invalid }" required appTextOnly />
                     <div *ngIf="city.invalid" class="invalid-feedback">
-                        <div *ngIf="city.errors.required">city is required</div>
+                        <div *ngIf="city.errors.required">City is required</div>
+                        <span *ngIf="city.errors?.textvalidation">no numbers allowed ,letters only</span>
                     </div>
                 </div>
 
@@ -38,7 +40,7 @@
                       province
                     }}</option>
                   </select>
-                 
+
                   <div *ngIf="province.invalid" class="invalid-feedback">
                       <div *ngIf="province.errors.required">province is required</div>
                   </div>
@@ -48,12 +50,12 @@
 
   <input type="text" class="form-control" name="zipcode" [(ngModel)]="model.zipcode" #zipcode="ngModel" [ngClass]="{ 'is-invalid':zipcode.invalid }" required appZipcode />
                 <div *ngIf="zipcode.invalid" class="invalid-feedback">
-                    <div *ngIf="zipcode.errors.required">province is required</div>
-                    <div *ngIf="zipcode.errors.zipCode">province is 4 digits</div>
+                    <div *ngIf="zipcode.errors.required">Zip code is required</div>
+                    <div *ngIf="zipcode.errors.zipCode">Zip code  must have 4 digits only</div>
                 </div>
             </div>
                   <div class="form-group">
-                      <button class="btn btn-primary">Save</button>
+                      <button class="btn btn-primary" [disabled]="!addressform.valid" >Save</button>
                   </div>
               </form>
           </div>
