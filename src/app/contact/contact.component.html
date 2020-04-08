@@ -30,15 +30,15 @@
                     }" />
                   <span class="invalid-feedback">
                     <span *ngIf="contactForm.get('firstName').errors?.required">
-                      Please enter your first name.
+                      First name is required.
                     </span>
                     <span *ngIf="contactForm.get('firstName').errors?.pattern">
-                      The first name must be longer than 3 characters.
+                       first name must be longer than 2 characters.
                     </span>
                     <span *ngIf="
                         contactForm.get('firstName').errors?.textvalidation
                       ">
-                      No numbers allowed.
+                      No numbers allowed,letters only
                     </span>
                   </span>
                 </div>
@@ -56,13 +56,13 @@
                     }" />
                   <span class="invalid-feedback">
                     <span *ngIf="contactForm.get('lastName').errors?.required">
-                      Please enter your last name.
+                      Last name is required.
                     </span>
                     <span *ngIf="contactForm.get('lastName').errors?.maxlength">
                       The last name must be less than 50 characters.
                     </span>
                     <span *ngIf="contactForm.get('lastName').errors?.textvalidation">
-                      No numbers allowed.
+                      No numbers allowed,letters only
                     </span>
                   </span>
                 </div>
@@ -80,15 +80,13 @@
                     }" />
                   <span class="invalid-feedback">
                     <span *ngIf="contactForm.get('id').errors?.required">
-                      Please enter your ID
+                      Identity number  is required.
                     </span>
                     <span *ngIf="contactForm.get('id').errors?.maxlength">
                       please enter a valid RSA 13 digit ID
                     </span>
 
-                      <span *ngIf="contactForm.get('id').errors.pattern">
-                        looks good
-                      </span>
+
                   </span>
                 </div>
               </div>
@@ -100,11 +98,16 @@
                       gender
                     }}</option>
                   </select>
+                  <span class="invalid-feedback">
+                    <span *ngIf="contactForm.get('gender').errors?.required">
+                      Gender  is required.
+                    </span>
+                  </span>
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="phoneNumber">phoneNumber</label>
+                <label for="phoneNumber">Phone Number</label>
                 <div>
                   <input class="form-control" id="phoneNumberid" type="text" placeholder="phoneNumber(required)"
                     formControlName="phoneNumber" [ngClass]="{
@@ -115,12 +118,13 @@
                     }" />
                   <span class="invalid-feedback">
                     <span *ngIf="contactForm.get('phoneNumber').errors?.required">
-                      Please enter your phoneNumber
+                      Phone number is required
                     </span>
                     <span *ngIf="
                         contactForm.get('phoneNumber').errors?.localPhoneNumber
                       ">
-                      Please enter a Valid phone number
+                      Please enter a Valid phone number <br>
+                      example:+27789863445
                     </span>
                   </span>
                 </div>
@@ -144,11 +148,7 @@
                       Please enter a valid email address.
                     </span>
                   </span>
-                  <span class="valid-feedback">
-                    <span *ngIf="contactForm.get('email').valid">
-                      looks good
-                    </span>
-                  </span>
+                  
                 </div>
               </div>
 
@@ -164,11 +164,7 @@
                 </div>
               </div>
 
-              <br />
-              Dirty: {{ contactForm.dirty }} <br />
-              Touched: {{ contactForm.touched }} <br />
-              Valid: {{ contactForm.valid }} <br />
-              Value: {{ contactForm.value | json }}
+
             </form>
           </div>
         </div>
