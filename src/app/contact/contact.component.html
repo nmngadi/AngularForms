@@ -12,9 +12,7 @@
                 <label for="firstNameId">Title</label>
                 <div>
                   <select class="form-control" id="title" formControlName="title">
-                    <option *ngFor="let title of titles" [value]="title">{{
-                      title
-                    }}</option>
+                    <option *ngFor="let title of titles" [value]="title">{{title }}</option>
                   </select>
                 </div>
               </div>
@@ -24,19 +22,19 @@
                   <input class="form-control" id="firstNameId" type="text" placeholder="First Name (required)"
                     formControlName="firstName" [ngClass]="{
                       'is-invalid':
-                        (contactForm.get('firstName').touched ||
-                          contactForm.get('firstName').dirty) &&
-                        !contactForm.get('firstName').valid
+                        (firstName.touched ||
+                        firstName.dirty) &&
+                        !firstName.valid
                     }" />
                   <span class="invalid-feedback">
-                    <span *ngIf="contactForm.get('firstName').errors?.required">
+                    <span *ngIf="firstName.errors?.required">
                       First name is required.
                     </span>
-                    <span *ngIf="contactForm.get('firstName').errors?.pattern">
+                    <span *ngIf="firstName.errors?.pattern">
                        first name must be longer than 2 characters.
                     </span>
                     <span *ngIf="
-                        contactForm.get('firstName').errors?.textvalidation
+                        firstName.errors?.textvalidation
                       ">
                       No numbers allowed,letters only
                     </span>
@@ -50,18 +48,18 @@
                   <input class="form-control" id="lastNameId" type="text" placeholder="Last Name (required)"
                     formControlName="lastName" [ngClass]="{
                       'is-invalid':
-                        (contactForm.get('lastName').touched ||
-                          contactForm.get('lastName').dirty) &&
-                        !contactForm.get('lastName').valid
+                        (lastName.touched ||
+                          lastName.dirty) &&
+                        !lastName.valid
                     }" />
                   <span class="invalid-feedback">
-                    <span *ngIf="contactForm.get('lastName').errors?.required">
+                    <span *ngIf="lastName.errors?.required">
                       Last name is required.
                     </span>
-                    <span *ngIf="contactForm.get('lastName').errors?.maxlength">
+                    <span *ngIf="lastName.errors?.maxlength">
                       The last name must be less than 50 characters.
                     </span>
-                    <span *ngIf="contactForm.get('lastName').errors?.textvalidation">
+                    <span *ngIf="lastName.errors?.textvalidation">
                       No numbers allowed,letters only
                     </span>
                   </span>
@@ -74,18 +72,20 @@
                   <input class="form-control" id="lastNameId" type="text" placeholder="id(required)"
                     formControlName="id" [ngClass]="{
                       'is-invalid':
-                        (contactForm.get('id').touched ||
-                          contactForm.get('id').dirty) &&
-                        !contactForm.get('id').valid
+                        (id.touched ||
+                          id.dirty) &&
+                        !id.valid
                     }" />
                   <span class="invalid-feedback">
-                    <span *ngIf="contactForm.get('id').errors?.required">
+                    <span *ngIf="id.errors?.required">
                       Identity number  is required.
                     </span>
-                    <span *ngIf="contactForm.get('id').errors?.maxlength">
+                    <span *ngIf="id.errors?.maxlength">
                       please enter a valid RSA 13 digit ID
                     </span>
-
+                    <span *ngIf="id.errors?.minlength">
+                      please enter a valid RSA 13 digit ID
+                    </span>
 
                   </span>
                 </div>
@@ -94,12 +94,10 @@
                 <label for="Gender">Gender</label>
                 <div>
                   <select class="form-control" formControlName="gender" id="gender">
-                    <option *ngFor="let gender of genders" [value]="gender">{{
-                      gender
-                    }}</option>
+                    <option *ngFor="let gender of genders" [value]="gender">{{gender }}</option>
                   </select>
                   <span class="invalid-feedback">
-                    <span *ngIf="contactForm.get('gender').errors?.required">
+                    <span *ngIf="gender.errors?.required">
                       Gender  is required.
                     </span>
                   </span>
@@ -112,16 +110,16 @@
                   <input class="form-control" id="phoneNumberid" type="text" placeholder="phoneNumber(required)"
                     formControlName="phoneNumber" [ngClass]="{
                       'is-invalid':
-                        (contactForm.get('phoneNumber').touched ||
-                          contactForm.get('phoneNumber').dirty) &&
-                        !contactForm.get('phoneNumber').valid
+                        (phoneNumber.touched ||
+                          phoneNumber.dirty) &&
+                        !phoneNumber.valid
                     }" />
                   <span class="invalid-feedback">
-                    <span *ngIf="contactForm.get('phoneNumber').errors?.required">
+                    <span *ngIf="phoneNumber.errors?.required">
                       Phone number is required
                     </span>
                     <span *ngIf="
-                        contactForm.get('phoneNumber').errors?.localPhoneNumber
+                        phoneNumber.errors?.localPhoneNumber
                       ">
                       Please enter a Valid phone number <br>
                       example:+27789863445
@@ -136,25 +134,25 @@
                   <input class="form-control" id="emailId" type="email" placeholder="Email (required)"
                     formControlName="email" [ngClass]="{
                       'is-invalid':
-                        (contactForm.get('email').touched ||
-                          contactForm.get('email').dirty) &&
-                        !contactForm.get('email').valid
+                        (email.touched ||
+                          email.dirty) &&
+                        !email.valid
                     }" />
                   <span class="invalid-feedback">
-                    <span *ngIf="contactForm.get('email').errors?.required">
+                    <span *ngIf="email.errors?.required">
                       Email is required.
                     </span>
-                    <span *ngIf="contactForm.get('email').errors?.email">
+                    <span *ngIf="email.errors?.email">
                       Please enter a valid email address.
                     </span>
                   </span>
-                  
+
                 </div>
               </div>
 
               <div class="form-group">
                 <div>
-                  <button class="btn btn-primary mr-3" type="submit" style="width: 80px;" [title]="
+                  <button class="btn btn-primary mr-3" type="submit"  [title]="
                       contactForm.valid
                         ? 'Save your entered data'
                         : 'Disabled until the form data is valid'
