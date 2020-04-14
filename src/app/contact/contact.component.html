@@ -17,7 +17,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="firstNameId">First Name</label>
+                <label for="firstName">First Name</label>
                 <div>
                   <input class="form-control" id="firstNameId" type="text" placeholder="First Name (required)"
                     formControlName="firstName" [ngClass]="{
@@ -31,19 +31,19 @@
                       First name is required.
                     </span>
                     <span *ngIf="firstName.errors?.pattern">
-                       first name must be longer than 2 characters.
+                       First name must be longer than 2 characters.
                     </span>
                     <span *ngIf="
                         firstName.errors?.textvalidation
                       ">
-                      No numbers allowed,letters only
+                      No numbers allowed,letters only.
                     </span>
                   </span>
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="lastNameId">Last Name</label>
+                <label for="lastName">Last Name</label>
                 <div>
                   <input class="form-control" id="lastNameId" type="text" placeholder="Last Name (required)"
                     formControlName="lastName" [ngClass]="{
@@ -60,7 +60,7 @@
                       The last name must be less than 50 characters.
                     </span>
                     <span *ngIf="lastName.errors?.textvalidation">
-                      No numbers allowed,letters only
+                      No numbers allowed,letters only.
                     </span>
                   </span>
                 </div>
@@ -81,10 +81,10 @@
                       Identity number  is required.
                     </span>
                     <span *ngIf="id.errors?.maxlength">
-                      please enter a valid RSA 13 digit ID
+                      Please enter a valid RSA 13 digit ID
                     </span>
                     <span *ngIf="id.errors?.minlength">
-                      please enter a valid RSA 13 digit ID
+                      Please enter a valid RSA 13 digit ID
                     </span>
 
                   </span>
@@ -121,8 +121,7 @@
                     <span *ngIf="
                         phoneNumber.errors?.localPhoneNumber
                       ">
-                      Please enter a Valid phone number <br>
-                      example:+27789863445
+                      Please enter a valid phone number.
                     </span>
                   </span>
                 </div>
