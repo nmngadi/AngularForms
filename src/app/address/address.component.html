@@ -1,5 +1,5 @@
 <div class="container">
-  <div style="margin-top: 50px; margin-left: 20%; margin-right: 20%;">
+  <div class="form-style">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 style="text-align:center;">Address Form</h3>
@@ -10,7 +10,7 @@
 
             <form name="form" (ngSubmit)="addressform.form.valid && onSubmit()" #addressform="ngForm" novalidate>
               <div class="form-group">
-                <label for="streetName"> Street</label>
+                <label for="Street Name"> Street</label>
                 <input type="text" class="form-control input-lg" name="streetName" [(ngModel)]="model.streetName"
                   #streetName="ngModel" [ngClass]="{ 'is-invalid':  streetName.invalid }" required
                   pattern="\d{1,3}.?\d{0,3}\s[a-zA-Z]{2,30}\s[a-zA-Z]{2,15}" />
@@ -21,7 +21,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="suburb">Suburb</label>
+                <label for="Suburb">Suburb</label>
                 <input type="text" class="form-control" name="suburb" [(ngModel)]="model.suburb" #suburb="ngModel"
                   [ngClass]="{ 'is-invalid':suburb.invalid }" required appTextOnly />
                 <span class="invalid-feedback">
@@ -30,7 +30,7 @@
                 </span>
               </div>
               <div class="form-group">
-                <label for="city">City</label>
+                <label for="City">City</label>
                 <input type="text" class="form-control" name="city" [(ngModel)]="model.city" #city="ngModel"
                   [ngClass]="{ 'is-invalid':city.invalid }" required appTextOnly />
                 <div *ngIf="city.invalid" class="invalid-feedback">
@@ -40,12 +40,10 @@
               </div>
 
               <div class="form-group">
-                <label for="province">Province</label>
+                <label for="Province">Province</label>
                 <select class="form-control" name="province" [(ngModel)]="model.province" #province="ngModel"
                   [ngClass]="{ 'is-invalid':province.invalid }" required>
-                  <option *ngFor="let province of provinces" [value]="province">{{
-                      province
-                    }}</option>
+                  <option *ngFor="let province of provinces" [value]="province">{{province }}</option>
                 </select>
 
                 <div *ngIf="province.invalid" class="invalid-feedback">
@@ -53,7 +51,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="zipcode">Zip Code</label>
+                <label for="Zipcode">Zip Code</label>
 
                 <input type="text" class="form-control" name="zipcode" [(ngModel)]="model.zipcode" #zipcode="ngModel"
                   [ngClass]="{ 'is-invalid':zipcode.invalid }" required appZipcode />
