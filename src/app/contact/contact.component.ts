@@ -35,9 +35,7 @@ export class ContactComponent implements OnInit {
     });
   }
 
-  get controls() {
-    return this.contactForm.controls;
-  }
+
   get title(): AbstractControl { return this.contactForm.get('title'); }
   get firstName(): AbstractControl { return this.contactForm.get('firstName'); }
   get lastName(): AbstractControl { return this.contactForm.get('lastName'); }
@@ -47,7 +45,7 @@ export class ContactComponent implements OnInit {
   get email(): AbstractControl { return this.contactForm.get('email'); }
 
 
-  Save() {
+  save() {
     alert(JSON.stringify(this.contactForm.value));
   }
 }
