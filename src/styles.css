@@ -1,11 +1,7 @@
-label:before{
-content:"*" ;
-color:red
+label::after {
+  content: "*";
+  color: red;
 }
-div
-{
+div {
   font-size: medium;
-
 }
-
-
