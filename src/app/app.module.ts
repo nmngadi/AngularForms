@@ -11,13 +11,25 @@ import { RouterModule } from '@angular/router';
 import { TextOnlyDirective } from './directives/text-only.directive';
 
 @NgModule({
-  declarations: [AppComponent, ContactComponent, ZipCodeDirective, AddressComponent, TextOnlyDirective],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule, RouterModule.forRoot([
-    { path: 'contact', component: ContactComponent },
-    { path: 'address', component: AddressComponent },
-    { path: '', redirectTo: 'address', pathMatch: 'full' },
-    { path: '**', redirectTo: 'address', pathMatch: 'full' }
-    ])],
+  declarations: [
+    AppComponent,
+    ContactComponent,
+    ZipCodeDirective,
+    AddressComponent,
+    TextOnlyDirective,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule.forRoot([
+      { path: 'contact', component: ContactComponent },
+      { path: 'address', component: AddressComponent },
+      { path: '', redirectTo: 'address', pathMatch: 'full' },
+      { path: '**', redirectTo: 'address', pathMatch: 'full' },
+    ]),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
