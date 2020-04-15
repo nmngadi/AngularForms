@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { localPhoneNumber } from '../validations/phone-number-validation';
 
 import { Contact } from '../models/contact';
@@ -29,17 +29,23 @@ export class ContactComponent implements OnInit {
       lastName: ['', [Validators.required, Validators.maxLength(50), textvalidation()]],
       email: ['', Validators.email],
       gender: ['', Validators.required],
-      id: ['', [Validators.required, Validators.maxLength(13)]],
+      id: ['', [Validators.required, Validators.maxLength(13), Validators.minLength(13)]],
       title: [''],
       phoneNumber: ['', [Validators.required, localPhoneNumber()]],
     });
   }
 
-  get controls() {
-    return this.contactForm.controls;
-  }
 
-  Save() {
+  get title(): AbstractControl { return this.contactForm.get('title'); }
+  get firstName(): AbstractControl { return this.contactForm.get('firstName'); }
+  get lastName(): AbstractControl { return this.contactForm.get('lastName'); }
+  get id(): AbstractControl { return this.contactForm.get('id'); }
+  get gender(): AbstractControl { return this.contactForm.get('gender'); }
+  get phoneNumber(): AbstractControl { return this.contactForm.get('phoneNumber'); }
+  get email(): AbstractControl { return this.contactForm.get('email'); }
+
+
+  save() {
     alert(JSON.stringify(this.contactForm.value));
   }
 }
