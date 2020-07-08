@@ -3,16 +3,34 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ContactComponent } from './contact/contact.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ZipCodeDirective } from './directives/zipcode.directive';
+import { AddressComponent } from './address/address.component';
+import { RouterModule } from '@angular/router';
+import { TextOnlyDirective } from './directives/text-only.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ContactComponent,
+    ZipCodeDirective,
+    AddressComponent,
+    TextOnlyDirective,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule.forRoot([
+      { path: 'contact', component: ContactComponent },
+      { path: 'address', component: AddressComponent },
+      { path: '', redirectTo: 'address', pathMatch: 'full' },
+      { path: '**', redirectTo: 'address', pathMatch: 'full' },
+    ]),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
