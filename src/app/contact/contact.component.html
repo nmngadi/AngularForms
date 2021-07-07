@@ -1,0 +1,156 @@
+<div class="container">
+  <div style="margin-top: 50px; margin-left: 20%; margin-right: 20%;">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 style="text-align: center;">Contact Form</h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <form novalidate (ngSubmit)="save()" [formGroup]="contactForm">
+              <div class="form-group">
+                <label for="Title">Title</label>
+                <div>
+                  <select class="form-control" id="title" formControlName="title">
+                    <option *ngFor="let title of titles" [value]="title">{{title}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <div>
+                  <input class="form-control" id="firstNameId" type="text" placeholder="First Name (required)"
+                    formControlName="firstName" [ngClass]="{
+                      'is-invalid':
+                        (firstName.touched || firstName.dirty) &&
+                        !firstName.valid
+                    }" />
+                  <span class="invalid-feedback">
+                    <span *ngIf="firstName.errors?.required">
+                      First name is required.
+                    </span>
+                    <span *ngIf="firstName.errors?.pattern">
+                      First name must be longer than 2 characters.
+                    </span>
+                    <span *ngIf="firstName.errors?.textvalidation">
+                      No numbers allowed,letters only.
+                    </span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <div>
+                  <input class="form-control" id="lastNameId" type="text" placeholder="Last Name (required)"
+                    formControlName="lastName" [ngClass]="{
+                      'is-invalid':
+                        (lastName.touched || lastName.dirty) && !lastName.valid
+                    }" />
+                  <span class="invalid-feedback">
+                    <span *ngIf="lastName.errors?.required">
+                      Last name is required.
+                    </span>
+                    <span *ngIf="lastName.errors?.maxlength">
+                      The last name must be less than 50 characters.
+                    </span>
+                    <span *ngIf="lastName.errors?.textvalidation">
+                      No numbers allowed,letters only.
+                    </span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="ID">RSA Identity Number</label>
+                <div>
+                  <input class="form-control" id="lastNameId" type="text" placeholder="id(required)"
+                    formControlName="id" [ngClass]="{
+                      'is-invalid': (id.touched || id.dirty) && !id.valid
+                    }" />
+                  <span class="invalid-feedback">
+                    <span *ngIf="id.errors?.required">
+                      Identity number is required.
+                    </span>
+                    <span *ngIf="id.errors?.maxlength">
+                      Please enter a valid RSA 13 digit ID
+                    </span>
+                    <span *ngIf="id.errors?.minlength">
+                      Please enter a valid RSA 13 digit ID
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="Gender">Gender</label>
+                <div>
+                  <select class="form-control" formControlName="gender" id="gender">
+                    <option *ngFor="let gender of genders" [value]="gender">{{
+                      gender
+                    }}</option>
+                  </select>
+                  <span class="invalid-feedback">
+                    <span *ngIf="gender.errors?.required">
+                      Gender is required.
+                    </span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <div>
+                  <input class="form-control" id="phoneNumberid" type="text" placeholder="phoneNumber(required)"
+                    formControlName="phoneNumber" [ngClass]="{
+                      'is-invalid':
+                        (phoneNumber.touched || phoneNumber.dirty) &&
+                        !phoneNumber.valid
+                    }" />
+                  <span class="invalid-feedback">
+                    <span *ngIf="phoneNumber.errors?.required">
+                      Phone number is required
+                    </span>
+                    <span *ngIf="phoneNumber.errors?.localPhoneNumber">
+                      Please enter a valid phone number.
+                    </span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="emailId">Email</label>
+                <div>
+                  <input class="form-control" id="emailId" type="email" placeholder="Email (required)"
+                    formControlName="email" [ngClass]="{
+                      'is-invalid':
+                        (email.touched || email.dirty) && !email.valid
+                    }" />
+                  <span class="invalid-feedback">
+                    <span *ngIf="email.errors?.required">
+                      Email is required.
+                    </span>
+                    <span *ngIf="email.errors?.email">
+                      Please enter a valid email address.
+                    </span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div>
+                  <button class="btn btn-primary mr-3" type="submit" [title]="
+                      contactForm.valid
+                        ? 'Save your entered data'
+                        : 'Disabled until the form data is valid'
+                    " [disabled]="!contactForm.valid">
+                    Save
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
